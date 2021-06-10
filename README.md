@@ -25,3 +25,5 @@ terraform plan --var-file=vars/dev.tfvars
 ```
 terraform apply --var-file=vars/dev.tfvars
 ```
+
+Documentation :  https://lkravi.medium.com/terraform-gitops-pipeline-for-kubernetes-with-flux-v2-283b1bfba097
