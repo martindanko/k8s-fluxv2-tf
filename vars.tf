@@ -37,8 +37,3 @@ variable "target_path" {
   default     = "staging-cluster"
   description = "flux sync target path"
 }
-
-variable "manifests_taget_path" {
-  type        = string
-  description = "URL to the manifests repo"
-}

@@ -14,12 +14,6 @@ data "flux_sync" "main" {
   branch      = var.branch
 }
 
-data "flux_sync" "manifests" {
-  target_path = var.manifests_taget_path
-  url         = "ssh://git@github.com/${var.github_owner}/${var.manifests_repository_name}.git"
-  branch      = var.branch
-}
-
 # Kubernetes
 resource "kubernetes_namespace" "flux_system" {
   metadata {
@@ -118,20 +112,6 @@ resource "github_repository_file" "kustomize" {
   repository = github_repository.main.name
   file       = data.flux_sync.main.kustomize_path
   content    = data.flux_sync.main.kustomize_content
-  branch     = var.branch
-}
-
-resource "github_repository_file" "k8s_sync" {
-  repository = github_repository.manifests.name
-  file       = data.flux_sync.manifests.path
-  content    = data.flux_sync.manifests.content
-  branch     = var.branch
-}
-
-resource "github_repository_file" "k8s_kustomize" {
-  repository = github_repository.manifests.name
-  file       = data.flux_sync.manifests.kustomize_path
-  content    = data.flux_sync.manifests.kustomize_content
   branch     = var.branch
 }
 
