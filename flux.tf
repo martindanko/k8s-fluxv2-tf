@@ -134,3 +134,36 @@ resource "github_repository_file" "k8s_kustomize" {
   content    = data.flux_sync.manifests.kustomize_content
   branch     = var.branch
 }
+
+resource "kubectl_manifest" "test" {
+    yaml_body = <<YAML
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: flux-kustomize-consul
+  namespace: flux-system
+spec:
+  interval: 5m0s
+  path: ./overlays/flux-kustomize-consul
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: sandbox-flux
+  targetNamespace: default
+
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: sandbox-flux
+  namespace: flux-system
+spec:
+  interval: 30s
+  ref:
+    branch: main
+  url: https://github.com/martindanko/k8s
+  secretRef:
+    name: https-credentials
+YAML
+}
