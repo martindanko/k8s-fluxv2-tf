@@ -115,7 +115,7 @@ resource "github_repository_file" "kustomize" {
   branch     = var.branch
 }
 
-resource "kubectl_manifest" "test" {
+resource "kubectl_manifest" "kustomization" {
     yaml_body = <<YAML
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -131,7 +131,10 @@ spec:
     kind: GitRepository
     name: sandbox-flux
   targetNamespace: default
-
+YAML
+}
+resource "kubectl_manifest" "gitrepository" {
+    yaml_body = <<YAML
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
