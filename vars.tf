@@ -38,7 +38,7 @@ variable "target_path" {
   description = "flux sync target path"
 }
 
-variable "manifests_repo" {
+variable "manifests_taget_path" {
   type        = string
   description = "URL to the manifests repo"
 }
