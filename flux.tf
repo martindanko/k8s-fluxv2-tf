@@ -15,7 +15,7 @@ data "flux_sync" "main" {
 }
 
 data "manifests_sync" "main" {
-  target_path = var.target_path
+  target_path = var.manifests_taget_path
   url         = "ssh://git@github.com/${var.github_owner}/${var.manifests_repository_name}.git"
   branch      = var.branch
 }
