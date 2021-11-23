@@ -14,6 +14,12 @@ variable "repository_name" {
   description = "github repository name"
 }
 
+variable "manifests_repository_name" {
+  type        = string
+  default     = "k8s"
+  description = "github repository for the manifests"
+}
+
 variable "repository_visibility" {
   type        = string
   default     = "private"
