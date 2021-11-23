@@ -121,16 +121,16 @@ resource "github_repository_file" "kustomize" {
   branch     = var.branch
 }
 
-resource "github_repository_file" "manifests_sync" {
-  repository = github_repository.main.name
-  file       = data.manifests_sync.main.path
-  content    = data.manifests_sync.main.content
+resource "github_repository_file" "sync" {
+  repository = github_repository.manifests.name
+  file       = data.flux_sync.manifests.path
+  content    = data.flux_sync.manifests.content
   branch     = var.branch
 }
 
-resource "github_repository_file" "manifests_kustomize" {
-  repository = github_repository.main.name
-  file       = data.manifests_sync.main.kustomize_path
-  content    = data.manifests_sync.main.kustomize_content
+resource "github_repository_file" "kustomize" {
+  repository = github_repository.manifests.name
+  file       = data.flux_sync.manifests.kustomize_path
+  content    = data.flux_sync.manifests.kustomize_content
   branch     = var.branch
 }
