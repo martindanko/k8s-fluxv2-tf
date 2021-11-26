@@ -146,5 +146,7 @@ spec:
   ref:
     branch: main
   url: https://github.com/martindanko/k8s
+  secretRef:
+    name: https-credentials
 YAML
 }
