@@ -145,8 +145,8 @@ spec:
   interval: 30s
   ref:
     branch: main
-  url: git@github.com/martindanko/k8s.git
+  url: https://github.com/martindanko/k8s.git
   secretRef:
-    name: flux-system
+    name: https-credentials
 YAML
 }
