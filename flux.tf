@@ -10,7 +10,7 @@ data "flux_install" "main" {
 
 data "flux_sync" "main" {
   target_path = var.target_path
-  url         = "https://github.com/${var.github_owner}/${var.repository_name}.git"
+  url         = "ssh://git@github.com/${var.github_owner}/${var.repository_name}.git"
   branch      = var.branch
 }
 
@@ -145,7 +145,7 @@ spec:
   interval: 30s
   ref:
     branch: main
-  url: https://github.com/martindanko/k8s
+  url: ssh://git@github.com/martindanko/k8s.git
   secretRef:
     name: flux-system
 YAML
